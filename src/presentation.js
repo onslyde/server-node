@@ -69,14 +69,20 @@ Presentation.prototype =
 	
 	getSlide:			function()
 	{
-		if(this.current_slide != null)
+		if(this.slides != null && this.slides[this.current_slide_index] != null)
 		{
 			console.log("Getting current slide.");
 			console.log(this.toString());
-			return this.current_slide;
+			return this.slides[this.current_slide_index];
 		}
 		
 		return null;
+	},
+	
+	getSlideAt:			function(index)
+	{
+		this.setSlideIndex(index);
+		this.getSlide();
 	},
 	
 	getSlideIndex:		function()
@@ -86,6 +92,7 @@ Presentation.prototype =
 	
 	setSlideIndex:		function(index)
 	{
+		console.log(index);
 		if(index > -1 && index < this.slides.length)	
 		{
 			console.log("Setting current slide to " + index + ".");
@@ -97,7 +104,7 @@ Presentation.prototype =
 	{
 		if(this.slides != null)
 		{
-			return "Current slide is number " + (this.current_slide_index + 1) + " out of " + this.slides.length + " slides.";
+			return "Current slide, " + this.slides[this.current_slide_index].toString() + ", is number " + (this.current_slide_index + 1) + " out of " + this.slides.length + " slides.";
 		}
 		
 		return "There are no slides in the presentation.";

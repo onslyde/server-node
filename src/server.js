@@ -26,7 +26,7 @@ function createPresentation()
 	
 	for(i = 0; i < 4; i++)
 	{
-		slide = new Slide("Slide " + i);
+		slide = new Slide("Slide " + (i+1));
 		slides.push(slide);
 	}
 	
