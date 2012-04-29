@@ -17,7 +17,9 @@ Presentation.prototype =
 	
 	start:				function()
 	{
-		console.log("Starting presentation.")
+		console.log("Starting presentation.");
+		console.log(this.toString());
+		
 		this.current_slide_index = 0;
 		
 		if(this.slides != null && this.slides.length > 0)
@@ -35,11 +37,16 @@ Presentation.prototype =
 	
 	getNextSlide:		function()
 	{
-		if(this.slides != null && this.current_slide_index < this.slides.length - 2)
+		if(this.slides != null && this.current_slide_index < this.slides.length - 1)
 		{
+			console.log("Getting next slide.");
 			this.current_slide_index++;
+			console.log(this.toString());
 			return this.slides[this.current_slide_index];
 		}
+		
+		console.log("Error getting next slide.");
+		console.log(this.toString());
 		
 		return null;
 	},
@@ -48,9 +55,14 @@ Presentation.prototype =
 	{
 		if(this.slides != null && this.current_slide_index > 0)
 		{
+			console.log("Getting previous slide.");
 			this.current_slide_index--;
+			console.log(this.toString());
 			return this.slides[this.current_slide_index];
 		}
+		
+		console.log("Error getting previous slide.");
+		console.log(this.toString());
 		
 		return null;
 	},
@@ -59,6 +71,8 @@ Presentation.prototype =
 	{
 		if(this.current_slide != null)
 		{
+			console.log("Getting current slide.");
+			console.log(this.toString());
 			return this.current_slide;
 		}
 		
@@ -68,6 +82,25 @@ Presentation.prototype =
 	getSlideIndex:		function()
 	{
 		return this.current_slide_index;
+	},
+	
+	setSlideIndex:		function(index)
+	{
+		if(index > -1 && index < this.slides.length)	
+		{
+			console.log("Setting current slide to " + index + ".");
+			this.current_slide_index = index;
+		}
+	},
+	
+	toString:			function()
+	{
+		if(this.slides != null)
+		{
+			return "Current slide is number " + (this.current_slide_index + 1) + " out of " + this.slides.length + " slides.";
+		}
+		
+		return "There are no slides in the presentation.";
 	}
 	
 };

@@ -11,8 +11,8 @@ var handle = {};
 handle[":GET"] = requestHandlers.start;
 handle["start:GET"] = requestHandlers.start;
 handle["restart:GET"] = requestHandlers.restart;
-handle["nextSlide:GET"] = requestHandlers.next_slide;
-handle["previousSlide:GET"] = requestHandlers.previous_slide;
+handle["nextSlide:GET"] = requestHandlers.nextSlide;
+handle["previousSlide:GET"] = requestHandlers.previousSlide;
 handle["slide:GET"] = requestHandlers.slide;
 
 // User feedback handlers
