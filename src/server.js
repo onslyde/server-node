@@ -2,26 +2,26 @@
 var http = require("http");
 
 // Custom libraries
-var Presentation = require("./presentation");
+var SlideDeck = require("./slideDeck");
 var Slide = require("./slide");
 
 function start(route, handle) 
 {
-	var presentation = createPresentation();
-	presentation.start()
+	var slide_deck = createPresentation();
+	slide_deck.start()
 	
 	function onRequest(request, response) 
 	{
-		route(presentation, handle, request, response);
+		route(slide_deck, handle, request, response);
 	}
 
 	http.createServer(onRequest).listen(8080);
 	console.log("Server has started.");
 }
 
-function createPresentation()
+function createSlideDeck()
 {
-	var presentation = new Presentation("Test Presentation");
+	var slide_deck = new SlideDeck("Test Slide Deck");
 	var slides = new Array();
 	
 	for(i = 0; i < 4; i++)
@@ -30,9 +30,9 @@ function createPresentation()
 		slides.push(slide);
 	}
 	
-	presentation.setSlides(slides);
+	slide_deck.setSlides(slides);
 	
-	return presentation;
+	return slide_deck;
 }
 
 exports.start = start;

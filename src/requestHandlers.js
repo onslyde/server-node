@@ -1,35 +1,35 @@
 var exec = require("child_process").exec;
 
-function start(presentation, response, arguments) 
+function start(slide_deck, response, arguments) 
 {
 	console.log("Request handler 'start' was called.");
-	var slide = presentation.start();
+	var slide = slide_deck.start();
 }
 
-function restart(presentation, response, arguments)
+function restart(slide_deck, response, arguments)
 {
 	console.log("Request handler 'restart' was called.");
-	var slide = presentation.restart();
+	var slide = slide_deck.restart();
 }
 
-function nextSlide(presentation, response, arguments)
+function nextSlide(slide_deck, response, arguments)
 {
 	console.log("Request handler 'nextSlide' was called.");
-	var slide = presentation.getNextSlide();
+	var slide = slide_deck.getNextSlide();
 }
 
-function previousSlide(presentation, response, arguments)
+function previousSlide(slide_deck, response, arguments)
 {
 	console.log("Request handler 'previousSlide' was called.");
-	var slide = presentation.getPreviousSlide();
+	var slide = slide_deck.getPreviousSlide();
 }
 
-function slide(presentation, response, arguments)
+function slide(slide_deck, response, arguments)
 {
 	if(arguments.length > 0)
 	{
 		console.log("Request handler 'slide' was called with argument " + arguments[1] + ".");
-		var slide = presentation.getSlideAt( parseInt(arguments[1]) );
+		var slide = slide_deck.getSlideAt( parseInt(arguments[1]) );
 	}
 	else
 	{

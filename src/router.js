@@ -1,6 +1,6 @@
 var url = require("url");
 
-function route(presentation, handle, request, response) 
+function route(slide_deck, handle, request, response) 
 {
 	parsed_request = parseRequest(request);
 	path_name = parsed_request[0];
@@ -11,7 +11,7 @@ function route(presentation, handle, request, response)
 	
 	if (typeof handle[path_name + ":" + method] === 'function') 
 	{
-		handle[path_name + ":" + method](presentation, response, path_arguments);
+		handle[path_name + ":" + method](slide_deck, response, path_arguments);
 	} 
 	else 
 	{
