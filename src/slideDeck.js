@@ -17,7 +17,7 @@ SlideDeck.prototype =
 	
 	start:				function()
 	{
-		console.log("Starting SlideDeck.");
+		console.log("Starting slide deck.");
 		console.log(this.toString());
 		
 		this.current_slide_index = 0;

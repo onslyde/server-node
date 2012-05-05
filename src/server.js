@@ -7,16 +7,20 @@ var Slide = require("./slide");
 
 function start(route, handle) 
 {
-	var slide_deck = createPresentation();
+	// Slide deck variables
+	var slide_deck = createSlideDeck();
 	slide_deck.start()
+	
+	// Server variables
+	var port = 8080;
 	
 	function onRequest(request, response) 
 	{
 		route(slide_deck, handle, request, response);
 	}
 
-	http.createServer(onRequest).listen(8080);
-	console.log("Server has started.");
+	http.createServer(onRequest).listen(port);
+	console.log("Server has started on port " + port.toString() + ".");
 }
 
 function createSlideDeck()
