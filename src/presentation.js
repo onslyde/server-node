@@ -3,15 +3,15 @@
 
 // Custom libraries
 var User = require("./user");
-var Flow = require("./flow");
+var PresentationEvent = require("./presentationEvent");
 var SlideDeck = require("./slideDeck");
 
 function Presentation(name)
 {
 	this.name = name;
-	this.presenter = null;
-	this.flow = null;
-	this.slide_deck = null;
+	this.presenter = new User("Generic User");
+	this.events = new Array();
+	this.slide_deck = new SlideDeck("Generic Slide Deck");
 	this.audience = new Array();
 };
 
