@@ -1,4 +1,8 @@
+// Libraries
+// None
 
+// Custom libraries
+// None
 
 function SlideDeck(name)
 {
@@ -24,6 +28,7 @@ SlideDeck.prototype =
 		
 		if(this.slides != null && this.slides.length > 0)
 		{
+			this.enterSlide();
 			return this.slides[this.current_slide_index];
 		}
 		
@@ -40,7 +45,9 @@ SlideDeck.prototype =
 		if(this.slides != null && this.current_slide_index < this.slides.length - 1)
 		{
 			console.log("Getting next slide.");
+			this.exitSlide();
 			this.current_slide_index++;
+			this.enterSlide();
 			console.log(this.toString());
 			return this.slides[this.current_slide_index];
 		}
@@ -56,7 +63,9 @@ SlideDeck.prototype =
 		if(this.slides != null && this.current_slide_index > 0)
 		{
 			console.log("Getting previous slide.");
+			this.exitSlide();
 			this.current_slide_index--;
+			this.enterSlide();
 			console.log(this.toString());
 			return this.slides[this.current_slide_index];
 		}
@@ -81,7 +90,9 @@ SlideDeck.prototype =
 	
 	getSlideAt:			function(index)
 	{
+		this.exitSlide();
 		this.setSlideIndex(index);
+		this.enterSlide();
 		this.getSlide();
 	},
 	
@@ -98,6 +109,18 @@ SlideDeck.prototype =
 			console.log("Setting current slide to " + index + ".");
 			this.current_slide_index = index;
 		}
+	},
+	
+	exitSlide:			function()
+	{
+		// TODO
+		console.log("Exiting slide " + this.current_slide_index.toString() + ".");
+	},
+	
+	enterSlide:			function()
+	{
+		// TODO
+		console.log("Entering slide " + this.current_slide_index.toString() + ".");
 	},
 	
 	toString:			function()

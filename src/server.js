@@ -9,7 +9,7 @@ function start(route, handle)
 {
 	// Slide deck variables
 	var slide_deck = createSlideDeck();
-	slide_deck.start()
+	slide_deck.start();
 	
 	// Server variables
 	var port = 8080;
@@ -30,7 +30,7 @@ function createSlideDeck()
 	
 	for(i = 0; i < 4; i++)
 	{
-		slide = new Slide("Slide " + (i+1));
+		slide = new Slide("Slide " + (i));
 		slides.push(slide);
 	}
 	

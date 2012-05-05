@@ -1,4 +1,8 @@
+// Libraries
+// None
 
+// Custom libraries
+// None
 
 function Slide(name)
 {
