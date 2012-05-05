@@ -2,7 +2,7 @@
 // None
 
 // Custom libraries
-// None
+var Slide = require("./slide");
 
 function SlideDeck(name)
 {
@@ -22,15 +22,17 @@ SlideDeck.prototype =
 	start:				function()
 	{
 		console.log("Starting slide deck.");
-		console.log(this.toString());
-		
 		this.current_slide_index = 0;
 		
 		if(this.slides != null && this.slides.length > 0)
 		{
-			this.enterSlide();
+			this.slides[this.current_slide_index].enterSlide();
+			console.log(this.toString());
 			return this.slides[this.current_slide_index];
 		}
+		
+		console.log("Error starting slide deck.");
+		console.log(this.toString());
 		
 		return null;
 	},
@@ -45,11 +47,7 @@ SlideDeck.prototype =
 		if(this.slides != null && this.current_slide_index < this.slides.length - 1)
 		{
 			console.log("Getting next slide.");
-			this.exitSlide();
-			this.current_slide_index++;
-			this.enterSlide();
-			console.log(this.toString());
-			return this.slides[this.current_slide_index];
+			return this.getSlideAt(this.current_slide_index + 1);
 		}
 		
 		console.log("Error getting next slide.");
@@ -63,11 +61,7 @@ SlideDeck.prototype =
 		if(this.slides != null && this.current_slide_index > 0)
 		{
 			console.log("Getting previous slide.");
-			this.exitSlide();
-			this.current_slide_index--;
-			this.enterSlide();
-			console.log(this.toString());
-			return this.slides[this.current_slide_index];
+			return this.getSlideAt(this.current_slide_index - 1);
 		}
 		
 		console.log("Error getting previous slide.");
@@ -80,19 +74,21 @@ SlideDeck.prototype =
 	{
 		if(this.slides != null && this.slides[this.current_slide_index] != null)
 		{
-			console.log("Getting current slide.");
 			console.log(this.toString());
 			return this.slides[this.current_slide_index];
 		}
+		
+		console.log("Error getting slide.");
+		console.log(this.toString());
 		
 		return null;
 	},
 	
 	getSlideAt:			function(index)
 	{
-		this.exitSlide();
+		this.slides[this.current_slide_index].exitSlide();
 		this.setSlideIndex(index);
-		this.enterSlide();
+		this.slides[this.current_slide_index].enterSlide();
 		this.getSlide();
 	},
 	
@@ -103,26 +99,16 @@ SlideDeck.prototype =
 	
 	setSlideIndex:		function(index)
 	{
-		console.log(index);
 		if(index > -1 && index < this.slides.length)	
 		{
-			console.log("Setting current slide to " + index + ".");
 			this.current_slide_index = index;
+			return this.current_slide_index;
 		}
+		
+		console.log("Error setting slide index.");
+		console.log(this.toString());
 	},
-	
-	exitSlide:			function()
-	{
-		// TODO
-		console.log("Exiting slide " + this.current_slide_index.toString() + ".");
-	},
-	
-	enterSlide:			function()
-	{
-		// TODO
-		console.log("Entering slide " + this.current_slide_index.toString() + ".");
-	},
-	
+		
 	toString:			function()
 	{
 		if(this.slides != null)
@@ -130,7 +116,7 @@ SlideDeck.prototype =
 			return "Current slide, " + this.slides[this.current_slide_index].toString() + ", is number " + (this.current_slide_index + 1) + " out of " + this.slides.length + " slides.";
 		}
 		
-		return "There are no slides in the SlideDeck.";
+		return "There are no slides in the slide deck.";
 	}
 	
 };
