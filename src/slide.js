@@ -23,7 +23,7 @@ Slide.prototype =
 		console.log("Entering slide " + this.name + ".");
 	},
 		
-	toString:	function()
+	toString:			function()
 	{
 		return this.name;
 	}

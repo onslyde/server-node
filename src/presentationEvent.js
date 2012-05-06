@@ -8,7 +8,6 @@ function PresentationEvent(name)
 {
 	this.name = name;
 	this.time = 0;
-	this.data = "";
 };
 
 PresentationEvent.prototype = 
