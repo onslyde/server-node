@@ -4,8 +4,9 @@
 // Custom libraries
 // None
 
-function Slide(name)
+function Slide(id, name)
 {
+	this.id = 0;
 	this.name = name;
 };
 

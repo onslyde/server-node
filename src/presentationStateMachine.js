@@ -3,6 +3,7 @@
 
 // Custom libraries
 var Arboreal = require("./arboreal");
+var Slide = require("./slide");
 
 function PresentationStateMachine(name)
 {
