@@ -12,13 +12,13 @@ function Slide(id, name)
 
 Slide.prototype = 
 {
-	exitSlide:			function()
+	exit:				function()
 	{
 		// TODO
 		console.log("Exiting slide " + this.name + ".");
 	},
 	
-	enterSlide:			function()
+	enter:				function()
 	{
 		// TODO
 		console.log("Entering slide " + this.name + ".");
