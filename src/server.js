@@ -2,14 +2,16 @@
 var http = require("http");
 
 // Custom libraries
-var SlideDeck = require("./slideDeck");
+var Presentation = require("./presentation");
+var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
 
 function start(route, handle) 
 {
 	// Slide deck variables
-	var slide_deck = createSlideDeck();
-	slide_deck.start();
+	var presentation = createPresentation();
+	var presentation_state_machine = presentation.state_machine;
+	//slide_deck.start();
 	
 	// Server variables
 	var port = 8080;
@@ -23,8 +25,17 @@ function start(route, handle)
 	console.log("Server has started on port " + port.toString() + ".");
 }
 
-function createSlideDeck()
+function createPresentation()
 {
+	var presentation = new Presentation("Test Presentation");
+	var presentation_state_machine = new PresentationStateMachine("Test State Machine");
+	
+	// Create slide tree 
+	// TODO make this a JSON object that is parsed
+	var state_tree = 
+	
+	
+	
 	var slide_deck = new SlideDeck("Test Slide Deck");
 	var slides = new Array();
 	

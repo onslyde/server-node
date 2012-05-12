@@ -11,9 +11,13 @@ var handle = {};
 handle[":GET"] = requestHandlers.start;
 handle["start:GET"] = requestHandlers.start;
 handle["restart:GET"] = requestHandlers.restart;
-handle["nextSlide:GET"] = requestHandlers.nextSlide;
-handle["previousSlide:GET"] = requestHandlers.previousSlide;
-handle["slide:GET"] = requestHandlers.slide;
+handle["getFirstSlide:GET"] = requestHandlers.getFirstSlide;
+handle["getLastSlide:GET"] = requestHandlers.getLastSlide;
+handle["getNextSlide:GET"] = requestHandlers.getNextSlide;
+handle["getPreviousSlide:GET"] = requestHandlers.getPreviousSlide;
+handle["getCurrentSlide:GET"] = requestHandlers.getCurrentSlide;
+handle["chooseBranch:GET"] = requestHandlers.chooseBranch;
+handle["returnToBranch:GET"] = requestHandlers.returnToBranch;
 
 // User feedback handlers
 // None
