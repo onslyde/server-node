@@ -62,8 +62,6 @@ function getCurrentSlide(presentation_state_machine, response, arguments)
 
 function chooseBranch(presentation_state_machine, response, arguments)
 {
-	console.log("Request handler 'chooseBranch' was called.");
-	
 	if(arguments.length > 0)
 	{
 		console.log("Request handler 'chooseBranch' was called with argument " + arguments[1] + ".");

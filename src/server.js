@@ -66,7 +66,7 @@ function createPresentation()
 	
 	// Third leg
 	c.appendChild();
-	g = c.children[0];
+	g = c.children[1];
 	g.data = new Slide(6, "G");
 	
 	g.appendChild();
@@ -75,7 +75,7 @@ function createPresentation()
 	
 	// Fourth leg
 	c.appendChild();
-	i = c.children[0];
+	i = c.children[2];
 	i.data = new Slide(8, "I");
 	
 	i.appendChild();
@@ -97,7 +97,7 @@ function createPresentation()
 	
 	// Sixth leg
 	k.appendChild();
-	n = k.children[0];
+	n = k.children[1];
 	n.data = new Slide(13, "N");
 	
 	n.appendChild();

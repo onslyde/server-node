@@ -80,18 +80,15 @@ PresentationStateMachine.prototype =
 			slide.exit();
 			
 			this.current_slide_node = this.slide_tree;
+			var previous_slide_node = this.current_slide_node;
 			this.current_slide_node = this.current_slide_node.children[0];
 			while(this.current_slide_node != undefined)
 			{
+				previous_slide_node = this.current_slide_node;
 				this.current_slide_node = this.current_slide_node.children[0];
 			}
 			
-			this.current_slide_node = this.current_slide_node.parent;
-			if(this.current_slide_node == null)
-			{
-				this.current_slide_node = this.slide_tree;
-			}
-			
+			this.current_slide_node = previous_slide_node;
 			slide = this.current_slide_node.data;
 			slide.enter();
 			console.log(this.toString());
@@ -124,7 +121,7 @@ PresentationStateMachine.prototype =
 			
 			slide = this.current_slide_node.data;
 			slide.exit();
-			this.current_slide_node = this.slide_tree.children[0];
+			this.current_slide_node = this.current_slide_node.children[0];
 			slide = this.current_slide_node.data;
 			slide.enter();
 			console.log(this.toString());
@@ -151,7 +148,7 @@ PresentationStateMachine.prototype =
 			
 			slide = this.current_slide_node.data;
 			slide.exit();
-			this.current_slide_node = this.slide_tree.parent;
+			this.current_slide_node = this.current_slide_node.parent;
 			slide = this.current_slide_node.data;
 			slide.enter();
 			console.log(this.toString());
@@ -197,10 +194,16 @@ PresentationStateMachine.prototype =
 				console.log(this.toString());
 				return null;
 			}
+			else if(this.current_slide_node.children.length == 1)
+			{
+				console.log("Error choosing a branch this is not a branching slide.");
+				console.log(this.toString());
+				return null;
+			}	
 			
 			slide = this.current_slide_node.data;
 			slide.exit();
-			this.current_slide_node = this.slide_tree.children[branch];
+			this.current_slide_node = this.current_slide_node.children[branch];
 			slide = this.current_slide_node.data;
 			slide.enter();
 			console.log(this.toString());
