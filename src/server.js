@@ -5,6 +5,7 @@ var http = require("http");
 var Presentation = require("./presentation");
 var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
+var Arboreal = require("./arboreal");
 
 function start(route, handle) 
 {
@@ -39,71 +40,71 @@ function createPresentation()
 	//                         |-> N -> O
 	
 	// First leg
-	var a = Arboreal();
-	a.data = new Slide("A");
+	var a = new Arboreal();
+	a.data = new Slide(0, "A");
 	
 	a.appendChild();
 	b = a.children[0];
-	b.data = new Slide("B");
+	b.data = new Slide(1, "B");
 	
 	b.appendChild();
 	c = b.children[0];
-	c.data = new Slide("C");
+	c.data = new Slide(2, "C");
 	
 	// Second leg
 	c.appendChild();
 	d = c.children[0];
-	d.data = new Slide("D");
+	d.data = new Slide(3, "D");
 	
 	d.appendChild();
 	e = d.children[0];
-	e.data = new Slide("E");
+	e.data = new Slide(4, "E");
 	
 	e.appendChild();
 	f = e.children[0];
-	f.data = new Slide("F");
+	f.data = new Slide(5, "F");
 	
 	// Third leg
 	c.appendChild();
 	g = c.children[0];
-	g.data = new Slide("G");
+	g.data = new Slide(6, "G");
 	
 	g.appendChild();
 	h = g.children[0];
-	h.data = new Slide("H");
+	h.data = new Slide(7, "H");
 	
 	// Fourth leg
 	c.appendChild();
 	i = c.children[0];
-	i.data = new Slide("I");
+	i.data = new Slide(8, "I");
 	
 	i.appendChild();
 	j = i.children[0];
-	j.data = new Slide("J");
+	j.data = new Slide(9, "J");
 	
 	j.appendChild();
 	k = j.children[0];
-	k.data = new Slide("K");
+	k.data = new Slide(10, "K");
 	
 	// Fifth leg
 	k.appendChild();
 	l = k.children[0];
-	l.data = new Slide("L");
+	l.data = new Slide(11, "L");
 	
 	l.appendChild();
 	m = l.children[0];
-	m.data = new Slide("M");
+	m.data = new Slide(12, "M");
 	
 	// Sixth leg
 	k.appendChild();
 	n = k.children[0];
-	n.data = new Slide("N");
+	n.data = new Slide(13, "N");
 	
 	n.appendChild();
 	o = n.children[0];
-	o.data = new Slide("O");
+	o.data = new Slide(14, "O");
 	
-	presentation_state_machine.slide_tree(state_tree_root);
+	presentation_state_machine.setSlideTree(a);
 	presentation.state_machine = presentation_state_machine;
 	
 	return presentation;

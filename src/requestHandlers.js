@@ -1,5 +1,9 @@
 var exec = require("child_process").exec;
 
+//Custom libraries
+var PresentationStateMachine = require("./presentationStateMachine");
+var Slide = require("./slide");
+
 function start(presentation_state_machine, response, arguments)
 {
 	console.log("Request handler 'start' was called.");
@@ -29,6 +33,14 @@ function getLastSlide(presentation_state_machine, response, arguments)
 	console.log("Request handler 'getLastSlide' was called.");
 	var slide = presentation_state_machine.getLastSlide();
 	extra = "Request handler 'getLastSlide' was called.";
+	writeGenericResponse(response, extra);
+}
+
+function getNextSlide(presentation_state_machine, response, arguments)
+{
+	console.log("Request handler 'getNextSlide' was called.");
+	var slide = presentation_state_machine.getNextSlide();
+	extra = "Request handler 'getNextSlide' was called.";
 	writeGenericResponse(response, extra);
 }
 
@@ -79,8 +91,8 @@ function writeGenericResponse(response, extra)
 {
 	var seconds = new Date().getTime() / 1000;
 	response.writeHead(200, {"Content-Type": "text/plain"});
-	response.write("Request was handled properly at: " + seconds.toString());
-	response.write("");
+	response.write("Request was handled properly at: " + seconds.toString() + "\n");
+	response.write("\n");
 	response.write(extra);
 	response.end();
 }
@@ -90,6 +102,7 @@ exports.start = start;
 exports.restart = restart;
 exports.getFirstSlide = getFirstSlide;
 exports.getLastSlide = getLastSlide;
+exports.getNextSlide = getNextSlide;
 exports.getPreviousSlide = getPreviousSlide;
 exports.getCurrentSlide = getCurrentSlide;
 exports.chooseBranch = chooseBranch;

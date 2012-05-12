@@ -18,6 +18,7 @@ PresentationStateMachine.prototype =
 	{
 		if(slide_tree != null)
 		{
+			console.log("Setting the slide tree for the presentation.");
 			this.slide_tree = slide_tree;
 			this.current_slide_node = this.slide_tree; 
 		}
@@ -255,7 +256,7 @@ PresentationStateMachine.prototype =
 		
 		if(this.slide_tree != null)
 		{
-			output = 'The current slide is: ' + this.current_slide_node.toString();
+			output = 'The current slide is: ' + this.current_slide_node.data.toString();
 		}
 		else
 		{
