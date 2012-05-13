@@ -7,7 +7,7 @@
 function PresentationEvent(name)
 {
 	this.name = name;
-	this.time = 0;
+	this.time = new Date().getTime();
 };
 
 PresentationEvent.prototype = 
