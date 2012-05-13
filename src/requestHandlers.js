@@ -4,69 +4,109 @@ var exec = require("child_process").exec;
 var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
 
-function start(presentation_state_machine, response, arguments)
+function start(presentation, response, arguments)
 {
 	console.log("Request handler 'start' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.start();
-	extra = "";
+	extra = "Request handler 'start' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function restart(presentation_state_machine, response, arguments)
+function restart(presentation, response, arguments)
 {
 	console.log("Request handler 'restart' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.restart();
-	extra = "Request handler 'restart' was called.";
+	extra = "Request handler 'restart' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function getFirstSlide(presentation_state_machine, response, arguments)
+function getFirstSlide(presentation, response, arguments)
 {
 	console.log("Request handler 'getFirstSlide' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.getFirstSlide();
-	extra = "Request handler 'getFirstSlide' was called.";
+	extra = "Request handler 'getFirstSlide' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function getLastSlide(presentation_state_machine, response, arguments)
+function getLastSlide(presentation, response, arguments)
 {
 	console.log("Request handler 'getLastSlide' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.getLastSlide();
-	extra = "Request handler 'getLastSlide' was called.";
+	extra = "Request handler 'getLastSlide' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function getNextSlide(presentation_state_machine, response, arguments)
+function getNextSlide(presentation, response, arguments)
 {
 	console.log("Request handler 'getNextSlide' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.getNextSlide();
-	extra = "Request handler 'getNextSlide' was called.";
+	extra = "Request handler 'getNextSlide' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function getPreviousSlide(presentation_state_machine, response, arguments)
+function getPreviousSlide(presentation, response, arguments)
 {
 	console.log("Request handler 'getPreviousSlide' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.getPreviousSlide();
-	extra = "Request handler 'getPreviousSlide' was called.";
+	extra = "Request handler 'getPreviousSlide' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function getCurrentSlide(presentation_state_machine, response, arguments)
+function getCurrentSlide(presentation, response, arguments)
 {
 	console.log("Request handler 'getCurrentSlide' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.getCurrentSlide();
-	extra = "Request handler 'getCurrentSlide' was called.";
+	extra = "Request handler 'getCurrentSlide' was called.\n";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 
-function chooseBranch(presentation_state_machine, response, arguments)
+function chooseBranch(presentation, response, arguments)
 {
 	if(arguments.length > 0)
 	{
 		console.log("Request handler 'chooseBranch' was called with argument " + arguments[1] + ".");
+		var presentation_state_machine = presentation.state_machine;
 		var slide = presentation_state_machine.chooseBranch( parseInt(arguments[1]) );
 		extra = "Request handler 'chooseBranch' was called with argument " + arguments[1] + ".";
+		if(slide != null)
+		{
+			extra += "Currently on slide: " + slide.toString();
+		}
 		writeGenericResponse(response, extra);
 	}
 	else
@@ -77,11 +117,16 @@ function chooseBranch(presentation_state_machine, response, arguments)
 	}
 }
 
-function returnToBranch(presentation_state_machine, response, arguments)
+function returnToBranch(presentation, response, arguments)
 {
 	console.log("Request handler 'returnToBranch' was called.");
+	var presentation_state_machine = presentation.state_machine;
 	var slide = presentation_state_machine.returnToBranch();
 	extra = "Request handler 'returnToBranch' was called.";
+	if(slide != null)
+	{
+		extra += "Currently on slide: " + slide.toString();
+	}
 	writeGenericResponse(response, extra);
 }
 

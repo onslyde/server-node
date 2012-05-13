@@ -19,7 +19,7 @@ function start(route, handle)
 	
 	function onRequest(request, response) 
 	{
-		route(presentation_state_machine, handle, request, response);
+		route(presentation, handle, request, response);
 	}
 
 	http.createServer(onRequest).listen(port);
@@ -41,71 +41,102 @@ function createPresentation()
 	
 	// First leg
 	var a = new Arboreal();
-	a.data = new Slide(0, "A");
+	var slide_a = new Slide(0, "A");
+	slide_a.presentation = presentation;
+	a.data = slide_a;
 	
 	a.appendChild();
-	b = a.children[0];
-	b.data = new Slide(1, "B");
+	var b = a.children[0];
+	var slide_b = new Slide(1, "B");
+	slide_b.presentation = presentation;
+	b.data = slide_b;
 	
 	b.appendChild();
-	c = b.children[0];
-	c.data = new Slide(2, "C");
+	var c = b.children[0];
+	var slide_c = new Slide(2, "C");
+	slide_c.presentation = presentation;
+	c.data = slide_c;
 	
 	// Second leg
 	c.appendChild();
-	d = c.children[0];
-	d.data = new Slide(3, "D");
+	var d = c.children[0];
+	var slide_d = new Slide(3, "D");
+	slide_d.presentation = presentation;
+	d.data = slide_d;
 	
 	d.appendChild();
-	e = d.children[0];
-	e.data = new Slide(4, "E");
+	var e = d.children[0];
+	var slide_e = new Slide(4, "E");
+	slide_e.presentation = presentation;
+	e.data = slide_e;
 	
 	e.appendChild();
-	f = e.children[0];
-	f.data = new Slide(5, "F");
+	var f = e.children[0];
+	var slide_f = new Slide(5, "F");
+	slide_f.presentation = presentation;
+	f.data = slide_f;
 	
 	// Third leg
 	c.appendChild();
-	g = c.children[1];
-	g.data = new Slide(6, "G");
+	var g = c.children[1];
+	var slide_g = new Slide(6, "G");
+	slide_g.presentation = presentation;
+	g.data = slide_g;
 	
 	g.appendChild();
-	h = g.children[0];
-	h.data = new Slide(7, "H");
+	var h = g.children[0];
+	var slide_h = new Slide(7, "H");
+	slide_h.presentation = presentation;
+	h.data = slide_h;
 	
 	// Fourth leg
 	c.appendChild();
-	i = c.children[2];
-	i.data = new Slide(8, "I");
+	var i = c.children[2];
+	var slide_i = new Slide(8, "I");
+	slide_i.presentation = presentation;
+	i.data = slide_i;
 	
 	i.appendChild();
-	j = i.children[0];
-	j.data = new Slide(9, "J");
+	var j = i.children[0];
+	var slide_j = new Slide(9, "J");
+	slide_j.presentation = presentation;
+	j.data = slide_j;
 	
 	j.appendChild();
-	k = j.children[0];
-	k.data = new Slide(10, "K");
+	var k = j.children[0];
+	var slide_k = new Slide(10, "K");
+	slide_k.presentation = presentation;
+	k.data = slide_k;
 	
 	// Fifth leg
 	k.appendChild();
-	l = k.children[0];
-	l.data = new Slide(11, "L");
+	var l = k.children[0];
+	var slide_l = new Slide(11, "L");
+	slide_l.presentation = presentation;
+	l.data = slide_l;
 	
 	l.appendChild();
-	m = l.children[0];
-	m.data = new Slide(12, "M");
+	var m = l.children[0];
+	var slide_m = new Slide(12, "M");
+	slide_m.presentation = presentation;
+	m.data = slide_m;
 	
 	// Sixth leg
 	k.appendChild();
-	n = k.children[1];
-	n.data = new Slide(13, "N");
+	var n = k.children[1];
+	var slide_n = new Slide(13, "N");
+	slide_n.presentation = presentation;
+	n.data = slide_n;
 	
 	n.appendChild();
-	o = n.children[0];
-	o.data = new Slide(14, "O");
+	var o = n.children[0];
+	var slide_o = new Slide(14, "O");
+	slide_o.presentation = presentation;
+	o.data = slide_o;
 	
 	presentation_state_machine.setSlideTree(a);
 	presentation.state_machine = presentation_state_machine;
+	presentation_state_machine.presentation = presentation;
 	
 	return presentation;
 }

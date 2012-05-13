@@ -8,6 +8,7 @@ var Slide = require("./slide");
 function PresentationStateMachine(name)
 {
 	this.name = name;
+	this.presentation = null;
 	this.current_slide_node = null;
 	this.slide_tree = null;
 };

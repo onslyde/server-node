@@ -2,25 +2,29 @@
 // None
 
 // Custom libraries
-// None
+var PresentationEvent = require("./presentationEvent");
+var PresentationEvent = require("./presentationEvent");
 
 function Slide(id, name)
 {
 	this.id = 0;
 	this.name = name;
+	this.presentation = null;
 };
 
 Slide.prototype = 
 {
 	exit:				function()
 	{
-		// TODO
 		console.log("Exiting slide " + this.name + ".");
+		if(this.presentation != null)
+		{
+			
+		}
 	},
 	
 	enter:				function()
 	{
-		// TODO
 		console.log("Entering slide " + this.name + ".");
 	},
 		
