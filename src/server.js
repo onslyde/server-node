@@ -19,9 +19,6 @@ function start(port, route, slideControllerHandler, presentation)
 	var presentation_state_machine = presentation.state_machine;
 	presentation_state_machine.start();
 	
-	// Server variables
-	var port = port;
-	
 	function onRequest(request, response) 
 	{
 		route(presentation, slideControllerHandler, request, response);

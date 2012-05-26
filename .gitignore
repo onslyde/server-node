@@ -8,6 +8,10 @@ gen/
 proguard.cfg
 project.properties
 
+# Node modules #
+################
+src/node_modules
+
 # Compiled source #
 ###################
 *.com
