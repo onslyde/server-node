@@ -11,12 +11,17 @@ DashboardUpdateEvent.prototype.constructor = DashboardUpdateEvent;
 function DashboardUpdateEvent(name)
 {
 	this.name = name;
+	this.time = new Date().getTime();
+	console.log("Dashboard event created: " + this.toString());
 }
 
-DashboardUpdateEvent.prototype.toString = function()
+DashboardUpdateEvent.prototype = 
 {
-	return this.name;
-}
+	toString:	function()
+	{
+		return this.name + " at: " + this.time.toString();
+	}
+};
 
 
 module.exports = DashboardUpdateEvent;

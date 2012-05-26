@@ -8,13 +8,14 @@ function PresentationEvent(name)
 {
 	this.name = name;
 	this.time = new Date().getTime();
+	console.log("Presentation event created: " + this.toString());
 };
 
 PresentationEvent.prototype = 
 {
 	toString:	function()
 	{
-		return "Event: " + this.name + "  Occured at: " + this.time.toString();
+		return this.name + " at: " + this.time.toString();
 	}
 };
 

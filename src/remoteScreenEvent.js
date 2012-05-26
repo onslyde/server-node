@@ -11,12 +11,17 @@ RemoteScreenEvent.prototype.constructor = RemoteScreenEvent;
 function RemoteScreenEvent(name)
 {
 	this.name = name;
+	this.time = new Date().getTime();
+	console.log("Remote screen event created: " + this.toString());
 }
 
-RemoteScreenEvent.prototype.toString = function()
+RemoteScreenEvent.prototype = 
 {
-	return this.name;
-}
+	toString:	function()
+	{
+		return this.name + " at: " + this.time.toString();
+	}
+};
 
 
 module.exports = RemoteScreenEvent;
