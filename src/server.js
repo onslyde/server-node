@@ -7,26 +7,31 @@ var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
 var Arboreal = require("./arboreal");
 
-function start(route, handle) 
+function start(port, route, slideControllerHandler, presentation) 
 {
+	// TODO In the future pass in the presentation
+	// for now create the presentation locally
+	
+	// TODO Do something with the slide event handler
+	
 	// Slide deck variables
 	var presentation = createPresentation();
 	var presentation_state_machine = presentation.state_machine;
 	presentation_state_machine.start();
 	
 	// Server variables
-	var port = 8080;
+	var port = port;
 	
 	function onRequest(request, response) 
 	{
-		route(presentation, handle, request, response);
+		route(presentation, slideControllerHandler, request, response);
 	}
 
 	http.createServer(onRequest).listen(port);
 	console.log("Server has started on port " + port.toString() + ".");
 }
 
-function createPresentation()
+function createPresentation(slideEventHandler)
 {
 	var presentation = new Presentation("Test Presentation");
 	var presentation_state_machine = new PresentationStateMachine("Test State Machine");

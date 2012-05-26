@@ -5,22 +5,23 @@
 var server = require("./server");
 var router = require("./router");
 var requestHandlers = require("./requestHandlers");
+var presentation = require("./presentation");
 
-// State machine handlers
-var handle = {};
-handle[":GET"] = requestHandlers.start;
-handle["start:GET"] = requestHandlers.start;
-handle["restart:GET"] = requestHandlers.restart;
-handle["getFirstSlide:GET"] = requestHandlers.getFirstSlide;
-handle["getLastSlide:GET"] = requestHandlers.getLastSlide;
-handle["getNextSlide:GET"] = requestHandlers.getNextSlide;
-handle["getPreviousSlide:GET"] = requestHandlers.getPreviousSlide;
-handle["getCurrentSlide:GET"] = requestHandlers.getCurrentSlide;
-handle["chooseBranch:GET"] = requestHandlers.chooseBranch;
-handle["returnToBranch:GET"] = requestHandlers.returnToBranch;
+// Slide controller handler
+var slideControllerHandler = {};
+slideControllerHandler[":GET"] = requestHandlers.start;
+slideControllerHandler["start:GET"] = requestHandlers.start;
+slideControllerHandler["restart:GET"] = requestHandlers.restart;
+slideControllerHandler["getFirstSlide:GET"] = requestHandlers.getFirstSlide;
+slideControllerHandler["getLastSlide:GET"] = requestHandlers.getLastSlide;
+slideControllerHandler["getNextSlide:GET"] = requestHandlers.getNextSlide;
+slideControllerHandler["getPreviousSlide:GET"] = requestHandlers.getPreviousSlide;
+slideControllerHandler["getCurrentSlide:GET"] = requestHandlers.getCurrentSlide;
+slideControllerHandler["chooseBranch:GET"] = requestHandlers.chooseBranch;
+slideControllerHandler["returnToBranch:GET"] = requestHandlers.returnToBranch;
 
 // User feedback handlers
 // None
 
 // Start server 
-server.start(router.route, handle);
+server.start(8080, router.route, slideControllerHandler, null);

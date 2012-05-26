@@ -4,6 +4,7 @@
 // Custom libraries
 var Arboreal = require("./arboreal");
 var Slide = require("./slide");
+var MainScreenEvent = require("./mainScreenEvent");
 
 function PresentationStateMachine(name)
 {
@@ -33,7 +34,7 @@ PresentationStateMachine.prototype =
 		{
 			this.current_slide_node = this.slide_tree;
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}
@@ -46,7 +47,7 @@ PresentationStateMachine.prototype =
 	restart:				function()
 	{
 		slide = this.current_slide_node.data;
-		slide.exit();
+		this.presentation.newEventOccured( slide.exit() );
 		this.start();
 	},
 	
@@ -57,10 +58,10 @@ PresentationStateMachine.prototype =
 		if(this.slide_tree != null)
 		{
 			slide = this.current_slide_node.data;
-			slide.exit();
+			this.presentation.newEventOccured( slide.exit() );
 			this.current_slide_node = this.slide_tree;
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}
@@ -78,7 +79,7 @@ PresentationStateMachine.prototype =
 		if(this.slide_tree != null)
 		{
 			slide = this.current_slide_node.data;
-			slide.exit();
+			this.presentation.newEventOccured( slide.exit() );
 			
 			this.current_slide_node = this.slide_tree;
 			var previous_slide_node = this.current_slide_node;
@@ -91,7 +92,7 @@ PresentationStateMachine.prototype =
 			
 			this.current_slide_node = previous_slide_node;
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}
@@ -121,10 +122,10 @@ PresentationStateMachine.prototype =
 			}
 			
 			slide = this.current_slide_node.data;
-			slide.exit();
+			this.presentation.newEventOccured( slide.exit() );
 			this.current_slide_node = this.current_slide_node.children[0];
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}
@@ -148,10 +149,10 @@ PresentationStateMachine.prototype =
 			}
 			
 			slide = this.current_slide_node.data;
-			slide.exit();
+			this.presentation.newEventOccured( slide.exit() );
 			this.current_slide_node = this.current_slide_node.parent;
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}
@@ -203,10 +204,10 @@ PresentationStateMachine.prototype =
 			}	
 			
 			slide = this.current_slide_node.data;
-			slide.exit();
+			this.presentation.newEventOccured( slide.exit() );
 			this.current_slide_node = this.current_slide_node.children[branch];
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}
@@ -230,7 +231,7 @@ PresentationStateMachine.prototype =
 			}
 			
 			slide = this.current_slide_node.data;
-			slide.exit();
+			this.presentation.newEventOccured( slide.exit() );
 			this.current_slide_node = this.current_slide_node.parent;
 			
 			while(this.current_slide_node != null)
@@ -244,7 +245,7 @@ PresentationStateMachine.prototype =
 			}
 			
 			slide = this.current_slide_node.data;
-			slide.enter();
+			this.presentation.newEventOccured( slide.enter() );
 			console.log(this.toString());
 			return slide;
 		}

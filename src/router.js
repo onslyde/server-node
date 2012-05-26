@@ -9,7 +9,7 @@ function route(presentation_state_machine, handle, request, response)
 	
 	console.log("Received a " + method + " request with path " + path_name);
 	
-	if (typeof handle[path_name + ":" + method] === 'function') 
+	if(typeof handle[path_name + ":" + method] === 'function') 
 	{
 		handle[path_name + ":" + method](presentation_state_machine, response, path_arguments);
 	} 

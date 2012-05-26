@@ -2,7 +2,6 @@
 // None
 
 // Custom libraries
-var PresentationEvent = require("./presentationEvent");
 var MainScreenEvent = require("./mainScreenEvent");
 
 
@@ -10,8 +9,6 @@ function Slide(id, name)
 {
 	this.id = id;
 	this.name = name;
-	// Possibly get rid of this
-	this.presentation = null;
 };
 
 Slide.prototype = 
