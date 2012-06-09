@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>OnSlyde - The Presentation Management Software</title>
+		<script src="jquery.js"></script>
+		
+		<!-- Interaction -->
+		<!-- **************************************************************** -->
+		<script type="text/javascript">
+		
+			// Button Handlers
+			// --------------------------------------------------------------
+			$(document).ready(function(){
+
+			    //Your Click event
+			    $('#test').click(function(){
+			        console.log('click');
+			    });
+			
+			});
+		</script>
+		
+	</head>
+
+	<body>
+		<h2>Presentation State Machine</h2>
+	
+		<!-- Current State -->
+		<!-- **************************************************************** -->
+		<label>Current State</label>
+		<br />
+		<textarea rows="4" cols="120" readonly="readonly">This is the current state.</textarea>
+		<br />
+		<br />
+		
+		
+		<!-- Previous State -->
+		<!-- **************************************************************** -->
+		<label>Previous State</label>
+		<br />
+		<textarea rows="4" cols="120" readonly="readonly">This is the previous state.</textarea>
+		<br />
+		<br />
+		
+		
+		<!-- Feedback -->
+		<!-- **************************************************************** -->
+		<label>Feedback</label>
+		<br />
+		<button type="button" disabled="true">Option 1</button>
+		<button type="button" disabled="true">Option 2</button>
+		<button type="button" disabled="true">Option 3</button>
+		<button type="button" disabled="true">Option 4</button>
+		<button type="button" disabled="true">Option 5</button>
+		<br />
+		<br />
+		
+		
+		<!-- State Controller -->
+		<!-- **************************************************************** -->
+		<label>State Controller</label>
+		<br />
+		
+		<button>A button element</button>
+		
+		<input type="submit" value="A submit button">
+		<br />
+		
+		<button type="button" id="test">Start</button>
+		<button type="button">Restart</button>
+		<button type="button">First Slide</button>
+		<button type="button">Last Slide</button>
+		<button type="button">Next Slide</button>
+		<button type="button">Previous Slide</button>
+		<button type="button">Current Slide</button>
+		<br />
+		<br />
+		<label>Choose Branch</label>
+		<br />
+		<select>
+		  <option value="Branch 1" disabled="true">Branch 1</option>
+		  <option value="Branch 2" disabled="true">Branch 2</option>
+		  <option value="Branch 3" disabled="true">Branch 3</option>
+		  <option value="Branch 4" disabled="true">Branch 4</option>
+		</select>
+		<button type="button">Last Branch</button>
+		<br />
+		<br />
+		
+	</body>
+</html>

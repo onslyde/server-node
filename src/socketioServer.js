@@ -3,19 +3,17 @@ var http = require('http');
 var io = require('socket.io');
 
 // Custom libraries
-// None
 
-function start(port) 
+function start(port, route) 
 {
 	// Setup node.js
 	function onRequest(request, response) 
 	{
-		console.log("Request received.");
-		var seconds = new Date().getTime() / 1000;
-		response.writeHead(200, {"Content-Type": "text/plain"});
-		response.write("Request was handled properly at: " + seconds.toString() + "\n");
-		response.write("\n");
-		response.end();
+		//route(null, null, request, response);
+		route(request, response);
+		//var seconds = new Date().getTime() / 1000;
+		//console.log("Request received at " + seconds.toString() + ".");
+		//loadInterface(request, response);
 	}
 
 	server = http.createServer(onRequest).listen(port);
