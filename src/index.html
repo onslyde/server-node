@@ -5,6 +5,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>OnSlyde - The Presentation Management Software</title>
 		<script src="jquery.js"></script>
+		<script src="slideController.js"></script>
+		<script src="participantFeedbackController.js"></script>
 		
 		<!-- Interaction -->
 		<!-- **************************************************************** -->
@@ -12,11 +14,76 @@
 		
 			// Button Handlers
 			// --------------------------------------------------------------
-			$(document).ready(function(){
+			$(document).ready(function()
+			{
 
-			    //Your Click event
-			    $('#test').click(function(){
-			        console.log('click');
+				// Feedback buttons
+			    $('#feedback_button_1').click(function()
+			    {
+			        console.log('feedback_button_1');
+			    });
+			    
+			    $('#feedback_button_2').click(function()
+			    {
+			        console.log('feedback_button_2');
+			    });
+			    
+			    $('#feedback_button_3').click(function()
+			    {
+			        console.log('feedback_button_3');
+			    });
+			    
+			    $('#feedback_button_4').click(function()
+			    {
+			        console.log('feedback_button_4');
+			    });
+			    
+			    $('#feedback_button_5').click(function()
+			    {
+			        console.log('feedback_button_5');
+			    });
+			    
+			    
+			    // Slide control buttons
+			    $('#start_button').click(function()
+			    {
+			        console.log('start_button');
+			    });
+			    
+			    $('#restart_button').click(function()
+			    {
+			        console.log('restart_button');
+			    });
+			    
+			    $('#first_slide_button').click(function()
+			    {
+			        console.log('first_slide_button');
+			    });
+			    
+			    $('#last_slide_button').click(function()
+			    {
+			        console.log('last_slide_button');
+			    });
+			    
+			    $('#next_slide_button').click(function()
+			    {
+			        console.log('next_slide_button');
+			    });
+			    
+			    $('#previous_slide_button').click(function()
+			    {
+			        console.log('previous_slide_button');
+			    });
+			    
+			    $('#current_slide_button').click(function()
+			    {
+			        console.log('current_slide_button');
+			    });
+			    
+			    // Branch control buttons
+			    $('#last_branch_button').click(function()
+			    {
+			        console.log('last_branch_button');
 			    });
 			
 			});
@@ -49,11 +116,11 @@
 		<!-- **************************************************************** -->
 		<label>Feedback</label>
 		<br />
-		<button type="button" disabled="true">Option 1</button>
-		<button type="button" disabled="true">Option 2</button>
-		<button type="button" disabled="true">Option 3</button>
-		<button type="button" disabled="true">Option 4</button>
-		<button type="button" disabled="true">Option 5</button>
+		<button type="button" disabled="true" id="feedback_button_1">Option 1</button>
+		<button type="button" disabled="true" id="feedback_button_2">Option 2</button>
+		<button type="button" disabled="true" id="feedback_button_3">Option 3</button>
+		<button type="button" disabled="true" id="feedback_button_4">Option 4</button>
+		<button type="button" disabled="true" id="feedback_button_5">Option 5</button>
 		<br />
 		<br />
 		
@@ -63,18 +130,13 @@
 		<label>State Controller</label>
 		<br />
 		
-		<button>A button element</button>
-		
-		<input type="submit" value="A submit button">
-		<br />
-		
-		<button type="button" id="test">Start</button>
-		<button type="button">Restart</button>
-		<button type="button">First Slide</button>
-		<button type="button">Last Slide</button>
-		<button type="button">Next Slide</button>
-		<button type="button">Previous Slide</button>
-		<button type="button">Current Slide</button>
+		<button type="button" id="start_button">Start</button>
+		<button type="button" id="restart_button">Restart</button>
+		<button type="button" id="first_slide_button">First Slide</button>
+		<button type="button" id="last_slide_button">Last Slide</button>
+		<button type="button" id="next_slide_button">Next Slide</button>
+		<button type="button" id="previous_slide_button">Previous Slide</button>
+		<button type="button" id="current_slide_button">Current Slide</button>
 		<br />
 		<br />
 		<label>Choose Branch</label>
@@ -85,7 +147,7 @@
 		  <option value="Branch 3" disabled="true">Branch 3</option>
 		  <option value="Branch 4" disabled="true">Branch 4</option>
 		</select>
-		<button type="button">Last Branch</button>
+		<button type="button" id="last_branch_button">Last Branch</button>
 		<br />
 		<br />
 		
