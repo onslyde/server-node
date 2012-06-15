@@ -4,44 +4,28 @@ var path = require('path');
 
 function route(request, response) 
 {
-	parsed_request = parseRequest(request);
-	path_name = parsed_request[0];
-	path_arguments = parsed_request[1];
-	method = parsed_request[2];
-	
-	console.log("Received a " + method + " request with path: " + path_name);
-	
 	var seconds = new Date().getTime() / 1000;
 	console.log("Request received at " + seconds.toString() + ".");
 	loadInterface(request, response);
-	
-	//if(typeof slideControllerHandler[path_name + ":" + method] === 'function') 
-	{
-		//slideControllerHandler[path_name + ":" + method](presentation_state_machine, response, path_arguments);
-	} 
-	//else 
-	{
-		//console.log("No request handler found for " + path_name);
-		//response.writeHead(404, {"Content-Type": "text/plain"});
-		//response.write("404 Not found");
-		//response.end();
-	}
 }
 
 function loadInterface(request, response)
 {
-	content_type = determineContentType(request);
-	console.log('Fetching a file of type: ' + content_type);
-	
-	if(content_type == 'text/html')
+	parsed_request = parseRequest(request);
+	path_name = parsed_request[0];
+	path_arguments = parsed_request[1]; // Not used
+	method = parsed_request[2];
+	content_type = parsed_request[3];
+    
+	if(method == 'GET' && content_type == 'text/html')
 	{
-		readContent(response, content_type, './index.html')
+		readContent(response, content_type, './index.html');
 	}
-	else if(content_type == 'text/javascript')
+	else if(method == 'GET' && content_type == 'text/javascript')
 	{
-		readContent(response, content_type, './jquery.js')
+		readContent(response, content_type, './' + path_name);
 	}
-	else if(content_type == 'text/css')
+	else if(method == 'GET' && content_type == 'text/css')
 	{
 		response.writeHead(500, {'Content-Type' : 'text/plain'});
 		response.end('Internal Server Error');
@@ -79,27 +63,6 @@ function readContent(response, content_type, file_name)
 	}
 }
 
-function determineContentType(request)
-{
-	var filePath = '.' + request.url;
-    if (filePath == './')
-        filePath = './index.htm';
-         
-    var extension_name = path.extname(filePath);
-    var content_type = 'text/html';
-    switch(extension_name) 
-    {
-        case '.js':
-        	content_type = 'text/javascript';
-            break;
-        case '.css':
-        	content_type = 'text/css';
-            break;
-    }
-    
-    return content_type;
-}
-
 function parseRequest(request)
 {
 	var path_name = url.parse(request.url).pathname;
@@ -119,7 +82,33 @@ function parseRequest(request)
 		}
 	}
 	
-	return [path_name, path_arguments, request.method]
+	content_type = determineContentType(request);
+	
+	console.log("Request received: " + request.method + "  Path: " + path_name + "  Content type: " + content_type);
+	
+	return [path_name, path_arguments, request.method, content_type];
+}
+
+function determineContentType(request)
+{
+	var filePath = '.' + request.url;
+    if (filePath == './')
+        filePath = './index.html';
+         
+    var extension_name = path.extname(filePath);
+   
+    var content_type = 'text/html';
+    switch(extension_name) 
+    {
+        case '.js':
+        	content_type = 'text/javascript';
+            break;
+        case '.css':
+        	content_type = 'text/css';
+            break;
+    }
+    
+    return content_type;
 }
 
 exports.route = route;
