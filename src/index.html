@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>OnSlyde - The Presentation Management Software</title>
 		<script src="jquery.js"></script>
-		<script src="http://cdn.socket.io/stable/socket.io.js"></script>
+		<script src="http://localhost:8080/socket.io/socket.io.js"></script>
 		
 		<!-- Interaction -->
 		<!-- **************************************************************** -->
@@ -19,25 +19,29 @@
 				//var slide_controller = new SlideController();
 				
 				// Create SocketIO instance, connect
-				var socket = new io.Socket('localhost',{
-					port: 8080
+				var socket = io.connect('http://localhost:8080');
+				
+				// Add a connect listener
+				socket.on('connect',function() 
+				{
+					console.log('Client has connected to the server!');
 				});
 				
 				// Add a connect listener
-				socket.on('connect',function() {
-					console.log('Client has connected to the server!');
-				});
-				// Add a connect listener
-				socket.on('message',function(data) {
+				socket.on('message',function(data) 
+				{
 					console.log('Received a message from the server!',data);
 				});
+				
 				// Add a disconnect listener
-				socket.on('disconnect',function() {
+				socket.on('disconnect',function() 
+				{
 					console.log('The client has disconnected!');
 				});
 				
 				// Sends a message to the server via sockets
-				function sendMessageToServer(message) {
+				function sendMessageToServer(message) 
+				{
 					socket.send(message);
 				}
 
@@ -68,8 +72,7 @@
 			    $('#start_button').click(function()
 			    {
 			        console.log('start_button');
-			        
-					//socket.connect(); 
+			        socket.send('TEST');
 			    });
 			    
 			    $('#restart_button').click(function()

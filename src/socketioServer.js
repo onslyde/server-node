@@ -9,11 +9,7 @@ function start(port, route)
 	// Setup node.js
 	function onRequest(request, response) 
 	{
-		//route(null, null, request, response);
 		route(request, response);
-		//var seconds = new Date().getTime() / 1000;
-		//console.log("Request received at " + seconds.toString() + ".");
-		//loadInterface(request, response);
 	}
 
 	server = http.createServer(onRequest).listen(port);
