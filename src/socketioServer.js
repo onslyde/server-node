@@ -3,13 +3,15 @@ var http = require('http');
 var io = require('socket.io');
 
 // Custom libraries
+//Custom libraries
+var socketioWsRouter = require("./socketioWsRouter");
 
-function start(port, route) 
+function start(port, httpRoute, wsRoute) 
 {
 	// Setup node.js
 	function onRequest(request, response) 
 	{
-		route(request, response);
+		httpRoute(request, response);
 	}
 
 	server = http.createServer(onRequest).listen(port);
@@ -25,6 +27,7 @@ function start(port, route)
 	function onMessage(event)
 	{
 		console.log('Received message from client!',event);
+		wsRoute(event);
 	}
 	
 	function onDisconnect()

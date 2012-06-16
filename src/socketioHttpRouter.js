@@ -2,7 +2,7 @@ var url = require("url");
 var fs = require('fs')
 var path = require('path');
 
-function route(request, response) 
+function httpRoute(request, response) 
 {
 	var seconds = new Date().getTime() / 1000;
 	console.log("Request received at " + seconds.toString() + ".");
@@ -111,4 +111,4 @@ function determineContentType(request)
     return content_type;
 }
 
-exports.route = route;
+exports.httpRoute = httpRoute;
