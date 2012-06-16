@@ -72,43 +72,106 @@
 			    $('#start_button').click(function()
 			    {
 			        console.log('start_button');
-			        socket.send('TEST');
+			        var message = 	{
+								  		"messageType": "start",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    $('#restart_button').click(function()
 			    {
 			        console.log('restart_button');
+			        var message = 	{
+								  		"messageType": "restart",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    $('#first_slide_button').click(function()
 			    {
 			        console.log('first_slide_button');
+			        var message = 	{
+								  		"messageType": "first_slide",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    $('#last_slide_button').click(function()
 			    {
 			        console.log('last_slide_button');
+			        var message = 	{
+								  		"messageType": "last_slide",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    $('#next_slide_button').click(function()
 			    {
 			        console.log('next_slide_button');
+			        var message = 	{
+								  		"messageType": "next_slide",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    $('#previous_slide_button').click(function()
 			    {
 			        console.log('previous_slide_button');
+			        var message = 	{
+								  		"messageType": "previous_slide",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    $('#current_slide_button').click(function()
 			    {
 			        console.log('current_slide_button');
+			        var message = 	{
+								  		"messageType": "current_slide",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    // Branch control buttons
 			    $('#last_branch_button').click(function()
 			    {
 			        console.log('last_branch_button');
+			        var message = 	{
+								  		"messageType": "last_branch",
+								    	"data"  :
+								     	{
+								         	"example": "TEST"
+								     	}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			
 			});

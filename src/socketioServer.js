@@ -24,10 +24,10 @@ function start(port, httpRoute, wsRoute)
 		client.on('disconnect',onDisconnect);
 	}
 	
-	function onMessage(event)
+	function onMessage(message)
 	{
-		console.log('Received message from client!',event);
-		wsRoute(event);
+		console.log('Received message from client!');
+		wsRoute(message);
 	}
 	
 	function onDisconnect()
