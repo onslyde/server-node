@@ -14,7 +14,7 @@ function start(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function restart(presentation, response, arguments)
@@ -27,7 +27,7 @@ function restart(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function getFirstSlide(presentation, response, arguments)
@@ -40,7 +40,7 @@ function getFirstSlide(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function getLastSlide(presentation, response, arguments)
@@ -53,7 +53,7 @@ function getLastSlide(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function getNextSlide(presentation, response, arguments)
@@ -66,7 +66,7 @@ function getNextSlide(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function getPreviousSlide(presentation, response, arguments)
@@ -79,7 +79,7 @@ function getPreviousSlide(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function getCurrentSlide(presentation, response, arguments)
@@ -92,7 +92,7 @@ function getCurrentSlide(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
 function chooseBranch(presentation, response, arguments)
@@ -107,13 +107,13 @@ function chooseBranch(presentation, response, arguments)
 		{
 			extra += "Currently on slide: " + slide.toString();
 		}
-		writeGenericResponse(response, extra);
+		writeWsResponse(response, extra);
 	}
 	else
 	{
 		console.log("Request handler 'chooseBranch' was called with no arguments.");
 		extra = "Request handler 'chooseBranch' was called with no arguments.";
-		writeGenericResponse(response, extra);
+		writeWsResponse(response, extra);
 	}
 }
 
@@ -127,10 +127,10 @@ function returnToBranch(presentation, response, arguments)
 	{
 		extra += "Currently on slide: " + slide.toString();
 	}
-	writeGenericResponse(response, extra);
+	writeWsResponse(response, extra);
 }
 
-function writeGenericResponse(response, extra)
+function writeHttpResponse(response, extra)
 {
 	var seconds = new Date().getTime() / 1000;
 	response.writeHead(200, {"Content-Type": "text/plain"});
@@ -138,6 +138,19 @@ function writeGenericResponse(response, extra)
 	response.write("\n");
 	response.write(extra);
 	response.end();
+}
+
+function writeWsResponse(response, extra)
+{
+	var seconds = new Date().getTime() / 1000;
+	json_response = 	{
+	  						"messageType": "ACK",
+	  						"data"  :
+				     	{
+				         	"example": "TEST"
+				     	}
+				    };
+	response = JSON.stringify(json_response)
 }
 
 

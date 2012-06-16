@@ -1,6 +1,6 @@
 var url = require("url");
 
-function route(presentation_state_machine, slideControllerHandler, request, response) 
+function route(presentation, slideControllerHandler, request, response) 
 {
 	parsed_request = parseRequest(request);
 	path_name = parsed_request[0];
@@ -11,7 +11,7 @@ function route(presentation_state_machine, slideControllerHandler, request, resp
 	
 	if(typeof slideControllerHandler[path_name + ":" + method] === 'function') 
 	{
-		slideControllerHandler[path_name + ":" + method](presentation_state_machine, response, path_arguments);
+		slideControllerHandler[path_name + ":" + method](presentation, response, path_arguments);
 	} 
 	else 
 	{
