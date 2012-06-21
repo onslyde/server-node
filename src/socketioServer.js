@@ -41,7 +41,8 @@ function start(port, httpRoute, wsRoute, slideControllerHandler)
 	function onMessage(message)
 	{
 		console.log('Received message from client!');
-		wsRoute(presentation, slideControllerHandler, message);
+		var response; 
+		wsRoute(presentation, slideControllerHandler, message, reponse);
 	}
 	
 	function onDisconnect()
