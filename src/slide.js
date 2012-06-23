@@ -2,7 +2,7 @@
 // None
 
 // Custom libraries
-var MainScreenEvent = require("./mainScreenEvent");
+var SlideStateEvent = require("./slideStateEvent");
 
 
 function Slide(id, name)
@@ -16,14 +16,14 @@ Slide.prototype =
 	exit:				function()
 	{
 		console.log("Exiting slide " + this.name + ".");
-		main_screen_event = new MainScreenEvent(this.toString());
+		slide_state_event = new SlideStateEvent(this.toString(), "exit");
 		return main_screen_event;
 	},
 	
 	enter:				function()
 	{
 		console.log("Entering slide " + this.name + ".");
-		main_screen_event = new MainScreenEvent(this.toString());
+		slide_state_event = new SlideStateEvent(this.toString(), "enter");
 		return main_screen_event;
 	},
 		

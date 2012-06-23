@@ -7,17 +7,13 @@
 function PresentationEvent(name)
 {
 	this.name = name;
-	this.time = new Date().getTime();
-	console.log("Presentation event created: " + this.toString());
-};
+}
 
-PresentationEvent.prototype = 
+PresentationEvent.prototype.toString = function()
 {
-	toString:	function()
-	{
-		return this.name + " at: " + this.time.toString();
-	}
+	return this.name;
 };
 
 
 module.exports = PresentationEvent;
+

@@ -29,17 +29,9 @@ Presentation.prototype =
 	{
 		if(event != null)
 		{
-			if(event instanceof MainScreenEvent)
+			if(event instanceof SlideStateEvent)
 			{
-				this.handleMainScreenEvent();
-			}
-			else if(event instanceof DashboardEvent)
-			{
-				this.handleDashboardEvent();
-			}
-			else if(event instanceof RemoteScreenEvent)
-			{
-				this.handleRemoteScreenEvent();
+				this.handleSlideStateEvent();
 			}
 			else if(event instanceof FeedbackEvent)
 			{
@@ -50,24 +42,14 @@ Presentation.prototype =
 		}
 	},
 	
-	handleMainScreenEvent:		function()
+	handleSlideStateEvent:		function()
 	{
-		console.log("Main Screen Handler works.");
-	},
-	
-	handleDashboardEvent:		function()
-	{
-		console.log("Dashboard Handler works.");
-	},
-	
-	handleRemoteScreenEvent:	function()
-	{
-		console.log("Remote Screen Handler works.");
+		console.log("Slide state event occured.");
 	},
 	
 	handleFeedbackEvent:		function()
 	{
-		console.log("Feedback Handler works.");
+		console.log("Feedback event occured.");
 	}
 };
 

@@ -6,6 +6,7 @@ var WsMsgHandler = require("./wsMsgHandler");
 var Presentation = require("./presentation");
 var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
+var FeedbackEvent = require("./feedbackEvent");
 
 FeedbackMsgHandler.prototype = new WsMsgHandler();
 FeedbackMsgHandler.prototype.constructor = FeedbackMsgHandler;
@@ -18,12 +19,12 @@ function FeedbackMsgHandler(name)
 FeedbackMsgHandler.prototype.sendFeedback = function(presentation, message, response, arguments)
 {
 	console.log("Feedback handler 'sendFeedback' was called.");
-	var presentation_state_machine = presentation.state_machine;
-	var current_slide = presentation_state_machine.getCurrentSlide();
-	//this.presentation.newEventOccured( slide.enter() );
+	var json_msg = JSON.parse(message);
+	
 	// TODO
-	// Fill in the body 
-	// reponse and event
+	// Once the feedback portion has been done properly fill in the feedback
+	var feedback_event = new FeedbackEvent('test', 'temp_user', json_msg.message_body);
+	presentation.newEventOccured( feedback_event );
 	
 	FeedbackMsgHandler.prototype.writeAckResponse(message, response, extra);
 };

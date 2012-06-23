@@ -5,23 +5,14 @@
 var PresentationEvent = require("./presentationEvent");
 
 FeedbackEvent.prototype = new PresentationEvent();
-
 FeedbackEvent.prototype.constructor = FeedbackEvent;
 
-function FeedbackEvent(name)
+function FeedbackEvent(name, user, feedback)
 {
-	this.name = name;
-	this.time = new Date().getTime();
-	console.log("Feedback event created: " + this.toString());
+	PresentationEvent.call(this, name);
+	this.user = user;
+	this.feedback = feedback;
 }
-
-FeedbackEvent.prototype = 
-{
-	toString:	function()
-	{
-		return this.name + " at: " + this.time.toString();
-	}
-};
 
 
 module.exports = FeedbackEvent;
