@@ -46,9 +46,11 @@ PresentationStateMachine.prototype =
 	
 	restart:				function()
 	{
+		console.log("Restarting the presentation.");
+		
 		slide = this.current_slide_node.data;
 		this.presentation.newEventOccured( slide.exit() );
-		this.start();
+		return this.start();
 	},
 	
 	getFirstSlide:			function()

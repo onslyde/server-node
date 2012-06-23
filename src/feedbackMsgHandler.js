@@ -18,8 +18,12 @@ function FeedbackMsgHandler(name)
 FeedbackMsgHandler.prototype.sendFeedback = function(presentation, message, response, arguments)
 {
 	console.log("Feedback handler 'sendFeedback' was called.");
+	var presentation_state_machine = presentation.state_machine;
+	var current_slide = presentation_state_machine.getCurrentSlide();
+	//this.presentation.newEventOccured( slide.enter() );
 	// TODO
 	// Fill in the body 
+	// reponse and event
 	
 	FeedbackMsgHandler.prototype.writeAckResponse(message, response, extra);
 };
@@ -32,7 +36,7 @@ FeedbackMsgHandler.prototype.writeAckResponse = function(message, response, extr
 								"protocol": "onslyde",
 								"version": "1",
 								"seq_number": "1",
-								"message_type": "state_control",
+								"message_type": "feedback",
 								"message_function": "ack",
 								"message_body":
 								{
@@ -50,7 +54,7 @@ FeedbackMsgHandler.prototype.writeNackResponse = function(message, response, ext
 								"protocol": "onslyde",
 								"version": "1",
 								"seq_number": "1",
-								"message_type": "state_control",
+								"message_type": "feedback",
 								"message_function": "nack",
 								"message_body":
 								{
@@ -68,7 +72,7 @@ FeedbackMsgHandler.prototype.writeErrorResponse = function(message, response, ex
 								"protocol": "onslyde",
 								"version": "1",
 								"seq_number": "1",
-								"message_type": "state_control",
+								"message_type": "feedback",
 								"message_function": "error",
 								"message_body":
 								{
