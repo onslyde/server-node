@@ -58,12 +58,12 @@ StateMsgHandler.prototype.getFirstSlide = function(presentation, message, respon
 	var current_slide = presentation_state_machine.getCurrentSlide();
 	var next_slide = presentation_state_machine.getFirstSlide();
 	
-	if(slide != null && next_slide.id != current_slide.id)
+	if(next_slide != null && next_slide.id != current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeAckResponse(message, response, extra);
 	}
-	else if(slide != null && next_slide.id == current_slide.id)
+	else if(next_slide != null && next_slide.id == current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeNackResponse(message, response, extra);
@@ -82,12 +82,12 @@ StateMsgHandler.prototype.getLastSlide = function(presentation, message, respons
 	var current_slide = presentation_state_machine.getCurrentSlide();
 	var next_slide = presentation_state_machine.getLastSlide();
 	
-	if(slide != null && next_slide.id != current_slide.id)
+	if(next_slide != null && next_slide.id != current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeAckResponse(message, response, extra);
 	}
-	else if(slide != null && next_slide.id == current_slide.id)
+	else if(next_slide != null && next_slide.id == current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeNackResponse(message, response, extra);
@@ -106,12 +106,12 @@ StateMsgHandler.prototype.getNextSlide = function(presentation, message, respons
 	var current_slide = presentation_state_machine.getCurrentSlide();
 	var next_slide = presentation_state_machine.getNextSlide();
 	
-	if(slide != null && next_slide.id != current_slide.id)
+	if(next_slide != null && next_slide.id != current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeAckResponse(message, response, extra);
 	}
-	else if(slide != null && next_slide.id == current_slide.id)
+	else if(next_slide != null && next_slide.id == current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeNackResponse(message, response, extra);
@@ -130,12 +130,12 @@ StateMsgHandler.prototype.getPreviousSlide = function(presentation, message, res
 	var current_slide = presentation_state_machine.getCurrentSlide();
 	var next_slide = presentation_state_machine.getPreviousSlide();
 	
-	if(slide != null && next_slide.id != current_slide.id)
+	if(next_slide != null && next_slide.id != current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeAckResponse(message, response, extra);
 	}
-	else if(slide != null && next_slide.id == current_slide.id)
+	else if(next_slide != null && next_slide.id == current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeNackResponse(message, response, extra);
@@ -154,7 +154,7 @@ StateMsgHandler.prototype.getCurrentSlide = function(presentation, message, resp
 	var current_slide = presentation_state_machine.getCurrentSlide();
 	var next_slide = presentation_state_machine.getCurrentSlide();
 	
-	if(slide != null && next_slide.id == current_slide.id)
+	if(next_slide != null && next_slide.id == current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeAckResponse(message, response, extra);
@@ -175,12 +175,12 @@ StateMsgHandler.prototype.chooseBranch = function(presentation, message, respons
 		var current_slide = presentation_state_machine.getCurrentSlide();
 		var next_slide = presentation_state_machine.chooseBranch( parseInt(arguments[1]) );
 		
-		if(slide != null && next_slide.id != current_slide.id)
+		if(next_slide != null && next_slide.id != current_slide.id)
 		{
 			extra = "";
 			StateMsgHandler.prototype.writeAckResponse(message, response, extra);
 		}
-		else if(slide != null && next_slide.id == current_slide.id)
+		else if(next_slide != null && next_slide.id == current_slide.id)
 		{
 			extra = "";
 			StateMsgHandler.prototype.writeNackResponse(message, response, extra);
@@ -206,12 +206,12 @@ StateMsgHandler.prototype.returnToBranch = function(presentation, message, respo
 	var current_slide = presentation_state_machine.getCurrentSlide();
 	var next_slide = presentation_state_machine.returnToBranch();
 	
-	if(slide != null && next_slide.id != current_slide.id)
+	if(next_slide != null && next_slide.id != current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeAckResponse(message, response, extra);
 	}
-	else if(slide != null && next_slide.id == current_slide.id)
+	else if(next_slide != null && next_slide.id == current_slide.id)
 	{
 		extra = "";
 		StateMsgHandler.prototype.writeNackResponse(message, response, extra);

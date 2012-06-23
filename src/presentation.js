@@ -4,9 +4,7 @@
 // Custom libraries
 var Slide = require("./slide");
 var PresentationStateMachine = require("./presentationStateMachine");
-var MainScreenEvent = require("./mainScreenEvent");
-var DashboardEventEvent = require("./dashboardEvent");
-var RemoteScreenEvent = require("./remoteScreenEvent");
+var SlideStateEvent = require("./slideStateEvent");
 var FeedbackEvent = require("./feedbackEvent");
 
 

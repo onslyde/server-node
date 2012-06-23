@@ -4,7 +4,6 @@
 // Custom libraries
 var Arboreal = require("./arboreal");
 var Slide = require("./slide");
-var MainScreenEvent = require("./mainScreenEvent");
 
 function PresentationStateMachine(name)
 {
