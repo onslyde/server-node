@@ -3,14 +3,13 @@ var http = require('http');
 var io = require('socket.io');
 
 // Custom libraries
-//Custom libraries
-var socketioWsRouter = require("./socketioWsRouter");
+var SocketioWsRouter = require("./socketioWsRouter");
 var Presentation = require("./presentation");
 var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
 var Arboreal = require("./arboreal");
 
-function start(port, httpRoute, wsRoute, slideControllerHandler) 
+function start(port, httpRoute, wsRoute, ws_msg_handler) 
 {
 	// TODO In the future pass in the presentation
 	// for now create the presentation locally
@@ -22,7 +21,7 @@ function start(port, httpRoute, wsRoute, slideControllerHandler)
 	var presentation_state_machine = presentation.state_machine;
 	presentation_state_machine.start();
 	
-	// Setup node.js
+	// Setup node.js http server
 	function onRequest(request, response) 
 	{
 		httpRoute(request, response);
@@ -31,7 +30,7 @@ function start(port, httpRoute, wsRoute, slideControllerHandler)
 	server = http.createServer(onRequest).listen(port);
 	console.log("Server has started on port " + port.toString() + ".");
 	
-	// Setup socket.io
+	// Setup socket.io ws server
 	function onConnection(client)
 	{
 		client.on('message',onMessage);
@@ -41,8 +40,8 @@ function start(port, httpRoute, wsRoute, slideControllerHandler)
 	function onMessage(message)
 	{
 		console.log('Received message from client!');
-		var response; 
-		wsRoute(presentation, slideControllerHandler, message, response);
+		var response = null; 
+		wsRoute(presentation, ws_msg_handler, message, response);
 	}
 	
 	function onDisconnect()

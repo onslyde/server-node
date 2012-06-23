@@ -1,27 +1,35 @@
+// Libraries
+// None
 
+// Custom libraries
+// None
 
-
-function wsRoute(presentation, slideControllerHandler, message, response) 
+function wsRoute(presentation, ws_msg_handler, message, response) 
 {
 	var seconds = new Date().getTime() / 1000;
 	console.log("Web service message received at " + seconds.toString() + ".");
 	var json_msg = JSON.parse(message);
 	
-	if(typeof slideControllerHandler[json_msg.messageType] === 'function')
+	// TODO
+	// Add some more message verification
+	if(typeof ws_msg_handler[json_msg.message_function] === 'function')
 	{
-		slideControllerHandler[json_msg.messageType](presentation, response, '');
+		ws_msg_handler[json_msg.message_function](presentation, message, response, '');
 	}
 	else
 	{
 		var seconds = new Date().getTime() / 1000;
-		json_response = 	{
-		  						"messageType": "ERROR",
-		  						"data"  :
-					     	{
-					         	"example": "No request handler found for " + json_msg.messageType,
-					         	"time":	seconds.toString()
-					     	}
-					    };
+		var json_response = 	{
+									"protocol": "onslyde",
+									"version": "1",
+									"seq_number": "1",
+									"message_type": "status",
+									"message_function": "error",
+									"message_body":
+									{
+										"explanation": "No request handler found for " + json_msg.messageType
+									}
+							    };
 		response = JSON.stringify(json_response);
 	}
 }
