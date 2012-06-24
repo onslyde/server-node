@@ -170,10 +170,10 @@ StateMsgHandler.prototype.chooseBranch = function(presentation, message, respons
 {
 	if(arguments.length > 0)
 	{
-		console.log("State control handler 'chooseBranch' was called with argument " + arguments[1] + ".");
+		console.log("State control handler 'chooseBranch' was called with argument " + arguments[0] + ".");
 		var presentation_state_machine = presentation.state_machine;
 		var current_slide = presentation_state_machine.getCurrentSlide();
-		var next_slide = presentation_state_machine.chooseBranch( parseInt(arguments[1]) );
+		var next_slide = presentation_state_machine.chooseBranch( parseInt(arguments[0]) );
 		
 		if(next_slide != null && next_slide.id != current_slide.id)
 		{

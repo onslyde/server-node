@@ -21,38 +21,67 @@ function start(port, httpRoute, wsRoute, ws_msg_handler)
 	var presentation_state_machine = presentation.state_machine;
 	presentation_state_machine.start();
 	
+	// Server variables
+	var clients = {};
+	
 	// Setup node.js http server
 	function onRequest(request, response) 
 	{
 		httpRoute(request, response);
 	}
 
-	server = http.createServer(onRequest).listen(port);
+	var server = http.createServer(onRequest).listen(port);
 	console.log("Server has started on port " + port.toString() + ".");
 	
 	// Setup socket.io ws server
+	var socket = io.listen(server);
+	socket.on('connection', onConnection);
+	console.log("Server has websockets bound to it.");
+	
 	function onConnection(client)
 	{
 		client.on('message',onMessage);
 		client.on('disconnect',onDisconnect);
+		clients[socket.id] = client;
 	}
 	
 	function onMessage(message)
 	{
-		console.log('Received message from client!');
+		console.log('Received message from client.');
 		var response = null; 
 		wsRoute(presentation, ws_msg_handler, message, response);
+		socket.emit('message',{hello: 'world'});
+		socket.emit('message',{hello: 'world'});
+		socket.emit('message',{hello: 'world'});
+		socket.emit('message',{hello: 'world'});
+		//socket.clients[sessionID].send('Test');
+		//socket.emit(message); // Send message to sender
+	    //socket.broadcast.emit(message); // Send message to everyone BUT se
 	}
 	
 	function onDisconnect()
 	{
 		console.log('Client and server disconnected.');
 	}
-	
-	var socket = io.listen(server);
-	socket.on('connection', onConnection);
-	console.log("Server has websockets bound to it.");
 }
+
+// Test Utility
+function getMethods(obj) {
+	  var result = [];
+	  for (var id in obj) {
+	    try {
+	      if (typeof(obj[id]) == "function") 
+	      {
+	    	  console.log(id + ": " + obj[id].toString());
+	        result.push(id + ": " + obj[id].toString());
+	      }
+	    } catch (err) {
+	    	console.log(id + ": inaccessible");
+	      result.push(id + ": inaccessible");
+	    }
+	  }
+	  return result;
+	}
 
 function createPresentation(slideEventHandler)
 {

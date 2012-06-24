@@ -28,9 +28,10 @@
 				});
 				
 				// Add a connect listener
-				socket.on('message',function(data) 
+				socket.on('message',function() 
 				{
-					console.log('Received a message from the server!',data);
+					console.log('Test');
+					//console.log('Received a message from the server!',data);
 				});
 				
 				// Add a disconnect listener
@@ -195,15 +196,34 @@
 			    });
 			    
 			    // Branch control buttons
-			    $('#last_branch_button').click(function()
+			    $('#choose_branch_button').click(function()
 			    {
-			        console.log('last_branch_button');
+			    	console.log('choose_branch_button');
+    				var branch = document.getElementById('branch_selection').value  
+    
 			        var message = 	{
 			        					"protocol": "onslyde",
 			        					"version": "1",
 			        					"seq_number": "1",
 			        					"message_type": "state_control",
-			        					"message_function": "get_last_branch",
+			        					"message_function": "choose_branch",
+			        					"message_body":
+			        					{
+			        						"value": branch
+			        					}
+								    };
+			        socket.send(JSON.stringify(message));
+			    });
+			    
+			    $('#return_to_branch_button').click(function()
+			    {
+			        console.log('return_to_branch_button');
+			        var message = 	{
+			        					"protocol": "onslyde",
+			        					"version": "1",
+			        					"seq_number": "1",
+			        					"message_type": "state_control",
+			        					"message_function": "return_to_branch",
 			        					"message_body":
 			        					{
 			        						"example": "TEST"
@@ -221,6 +241,14 @@
 	<body>
 		<h2>Presentation State Machine</h2>
 		
+		<!-- Response -->
+		<!-- **************************************************************** -->
+		<label>Response</label>
+		<br />
+		<textarea rows="4" cols="120" readonly="readonly">This is the response.</textarea>
+		<br />
+		<br />
+		
 		<!-- Current State -->
 		<!-- **************************************************************** -->
 		<label>Current State</label>
@@ -228,16 +256,6 @@
 		<textarea rows="4" cols="120" readonly="readonly">This is the current state.</textarea>
 		<br />
 		<br />
-		
-		
-		<!-- Previous State -->
-		<!-- **************************************************************** -->
-		<label>Previous State</label>
-		<br />
-		<textarea rows="4" cols="120" readonly="readonly">This is the previous state.</textarea>
-		<br />
-		<br />
-		
 		
 		<!-- Feedback -->
 		<!-- **************************************************************** -->
@@ -268,11 +286,14 @@
 		<br />
 		<label>Choose Branch</label>
 		<br />
-		<select>
-		  <option value="Branch 1" disabled="true">Branch 1</option>
-		  <option value="Branch 2" disabled="true">Branch 2</option>
+		<select id="branch_selection">
+		  <option value="0" >0</option>
+		  <option value="1" >1</option>
+		  <option value="2" >2</option>
 		</select>
-		<button type="button" id="last_branch_button">Last Branch</button>
+		<br />
+		<button type="button" id="choose_branch_button">Choose Branch</button>
+		<button type="button" id="return_to_branch_button">Return to Branch</button>
 		<br />
 		<br />
 		
