@@ -50,21 +50,27 @@
 			    $('#feedback_button_1').click(function()
 			    {
 			        console.log('feedback_button_1');
-			    });
-			    
-			    $('#feedback_button_2').click(function()
-			    {
-			        console.log('feedback_button_2');
-			    });
-			    
-			    $('#feedback_button_3').click(function()
-			    {
-			        console.log('feedback_button_3');
-			    });
-			    
-			    $('#feedback_button_4').click(function()
-			    {
-			        console.log('feedback_button_4');
+			        var feedback_option = "1";
+			        for (var i=0; i < document.feedback_form.feedback_radio.length; i++)
+				   	{
+				   		if (document.feedback_form.feedback_radio[i].checked)
+				      	{
+				      		feedback_option = document.feedback_form.feedback_radio[i].value;
+				      	}
+				   	}
+				   	
+			        var message = 	{
+			        					"protocol": "onslyde",
+			        					"version": "1",
+			        					"seq_number": "1",
+			        					"message_type": "feedback",
+			        					"message_function": "feedback_option",
+			        					"message_body":
+			        					{
+			        						"value": feedback_option
+			        					}
+								    };
+			        socket.send(JSON.stringify(message));
 			    });
 			    
 			    
@@ -237,10 +243,11 @@
 		<!-- **************************************************************** -->
 		<label>Feedback</label>
 		<br />
-		<button type="button" disabled="true" id="feedback_button_1">Option 1</button>
-		<button type="button" disabled="true" id="feedback_button_2">Option 2</button>
-		<button type="button" disabled="true" id="feedback_button_3">Option 3</button>
-		<button type="button" disabled="true" id="feedback_button_4">Option 4</button>
+		<form name="feedback_form">
+		<input type="radio" name="feedback_radio" value="Option 1" checked> Option 1<br />
+		<input type="radio" name="feedback_radio" value="Option 2"> Option 2<br />
+		<button type="button" id="feedback_button_1">Submit Feedback</button>
+		</form>
 		<br />
 		<br />
 		

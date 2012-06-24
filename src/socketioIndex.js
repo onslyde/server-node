@@ -25,7 +25,7 @@ ws_msg_handler["choose_branch"] = state_msg_handler.chooseBranch;
 ws_msg_handler["return_to_branch"] = state_msg_handler.returnToBranch;
 
 // Feedback message handler
-ws_msg_handler["send_feedback"] = feedback_msg_handler.sendFeedback;
+ws_msg_handler["feedback_option"] = feedback_msg_handler.feedback;
 
 //Start server 
 SocketioServer.start(8080, SocketioHttpRouter.httpRoute, SocketioWsRouter.wsRoute, ws_msg_handler);

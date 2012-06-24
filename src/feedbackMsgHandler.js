@@ -16,16 +16,17 @@ function FeedbackMsgHandler(name)
 	WsMsgHandler.call(this, name);
 }
 
-FeedbackMsgHandler.prototype.sendFeedback = function(presentation, message, response, arguments)
+FeedbackMsgHandler.prototype.feedback = function(presentation, message, response, arguments)
 {
-	console.log("Feedback handler 'sendFeedback' was called.");
+	console.log("Feedback handler 'feedback' was called.");
 	var json_msg = JSON.parse(message);
+	//console.log(json_msg.message_body.value);
 	
 	// TODO
 	// Once the feedback portion has been done properly fill in the feedback
 	var feedback_event = new FeedbackEvent('test', 'temp_user', json_msg.message_body);
 	presentation.newEventOccured( feedback_event );
-	
+	extra = '';
 	FeedbackMsgHandler.prototype.writeAckResponse(message, response, extra);
 };
 
