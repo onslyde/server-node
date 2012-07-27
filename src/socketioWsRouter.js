@@ -19,7 +19,7 @@ function wsRoute(presentation, ws_msg_handler, message, response)
 	}
 	else
 	{
-		var seconds = new Date().getTime() / 1000;
+		console.log("Error no routes are defined for the json message.");
 		var json_response = 	{
 									"protocol": "onslyde",
 									"version": "1",

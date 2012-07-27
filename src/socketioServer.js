@@ -8,8 +8,9 @@ var Presentation = require("./presentation");
 var PresentationStateMachine = require("./presentationStateMachine");
 var Slide = require("./slide");
 var Arboreal = require("./arboreal");
+var PresentationEventRouter = require("./presentationEventRouter");
 
-function start(port, httpRoute, wsRoute, ws_msg_handler) 
+function start(port, httpRoute, wsRoute, ws_msg_handler, presentation_event_handler) 
 {
 	// TODO In the future pass in the presentation
 	// for now create the presentation locally
@@ -86,6 +87,8 @@ function getMethods(obj) {
 function createPresentation(slideEventHandler)
 {
 	var presentation = new Presentation("Test Presentation");
+	var handlers = null;
+	presentation.event_router = new PresentationEventRouter("Test Event Router", handlers);
 	var presentation_state_machine = new PresentationStateMachine("Test State Machine");
 	 
 	// TODO make this a JSON object that is parsed

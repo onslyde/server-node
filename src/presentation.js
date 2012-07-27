@@ -13,6 +13,7 @@ function Presentation(name)
 	this.name = name;
 	this.state_machine = null;
 	this.events = new Array();
+	this.event_router = null;
 };
 
 Presentation.prototype =
